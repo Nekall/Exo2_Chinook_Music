@@ -1,0 +1,75 @@
+martin = User.create(first_name: "Martin", last_name: "Courgette", email: "martin@gmail.com")
+
+george = User.create(first_name: "George", last_name: "Aubergine", email: "george@gmail.com")
+
+geraldine = User.create(first_name: "Geraldine", last_name: "Carotte", email: "geraldine@gmail.com")
+
+seb = User.create(first_name: "Sebastian", last_name: "Courge", email: "seb@gmail.com")
+
+victor = User.create(first_name: "Victor", last_name: "Potiron", email: "victor@gmail.com")
+
+100.times do |index|
+  u = User.create
+  u.first_name = "Kevin" + index.to_s
+  u.email = "email_#{index}@email.com"
+  u.save
+end
+
+
+
+rails g model Movie 
+name:string 
+year:integer 
+genre:string 
+synopsis:text 
+director:string 
+allocine_rating:float 
+my_rating:integer 
+already_seen:boolean
+
+    name qui porte le nom du film et est de type string.
+    year qui porte l'année de sortie et est de type integer.
+    genre qui porte le type de film (horreur, action, etc.) et est de type string.
+    synopsis qui porte le résumé du film et est de type text.
+    director qui porte le nom du réalisateur et est de type string.
+    allocine_rating qui porte le score "spectateur" visible sur allocine.fr et est de type float.
+    my_rating qui porte ton score personnel sur le film et est de type integer.
+    already_seen qui indique si tu as déjà vu le film et est de type boolean.
+
+
+
+film1 = Movie.new
+film1.name = "Beowulf"
+film1.year = 1999
+film1.genre = "Fantastique, Action, Epouvante-horreur"
+film1.synopsis = "La Terre a traverse de nombreuses crises et cataclysmes. Les hommes vivent dans la peur et dans l'obscurite car les tenebres voilent desormais la lumiere du soleil. Dans cet univers hostile, erre un homme maudit et solitaire, Beowulf, fruit des amours interdites d'une mortelle avec le diable. Pour vaincre le monstre qui est en lui, Beowulf doit combattre le mal. Son plus redoutable adversaire est une creature tapie dans les combles d'une forteresse. Invincible, d'une sauvagerie sans nom, elle tue quotidiennement puis disparait des l'aube. "
+film1.director = "Graham Baker"
+film1.allocine_rating = '1,2'
+film1.my_rating = 1
+film1.already_seen = true
+film1.save
+
+
+Movie.create(name: "L'Exorciste", year: 1074, genre: "Epouvante-horreur", synopsis: "L'actrice Chris McNeil est inquiète au sujet de sa fillette Regan : après que l'on ait entendu des bruits curieux venant de sa chambre, la petite a changé, proférant de constantes insanités. Une force para-normale l'habite, qui coûte la vie au metteur en scène de Chris. Désespérée, cette dernière fait appel à deux exorcistes... ", director: "William Friedkin", allocine_rating: '3,9', my_rating: 2, already_seen: true)
+
+Movie.create(name: "OSS 117, Le Caire nid d'espions", year: 2006, genre: " Comédie, Action, Espionnage", synopsis: "Égypte, 1955, le Caire est un véritable nid d'espions.
+Tout le monde se méfie de tout le monde, tout le monde complote contre tout le monde : Anglais, Français, Soviétiques, la famille du Roi déchu Farouk qui veut retrouver son trône, les Aigles de Kheops, secte religieuse qui veut prendre le pouvoir. Le Président de la République Française, Monsieur René Coty, envoie son arme maîtresse mettre de l'ordre dans cette pétaudière au bord du chaos : Hubert Bonisseur de la Bath, dit OSS 117. ", director: "William Friedkin", allocine_rating: '3,8', my_rating: 5, already_seen: true)
+
+Movie.create(name: "Le Cinquième élément", year: 1997, genre: "Science fiction, Action", synopsis: "Au XXIII siècle, dans un univers étrange et coloré, où tout espoir de survie est impossible sans la découverte du cinquième élément, un héros affronte le mal pour sauver l'humanité.", director: "Luc Besson", allocine_rating: '4.2', my_rating: 5, already_seen: true)
+
+
+
+
+
+
+Movie.where(:id =>[199,195,192,119,105,122,149,167,173,174]).update_all(:already_seen => true)
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,63 @@
+Crée une nouvelle application Rails. Tu vas maintenant générer un nouveau model Album dont les attributs seront les suivants :
+
+    title qui porte le titre de l'album et est de type string.
+    artist qui porte nom de l'artiste et est de type string.
+
+Ensuite tu vas faire un second model Track avec les attributs :
+
+    title qui porte le titre de la chanson et est de type string.
+    album qui porte le titre de l'album et est de type string.
+    artist qui porte le nom de l'artiste et est de type string.
+    duration qui porte la durée de la chanson (en millisecondes) et est de type integer.
+    size qui porte la taille (en octets) de la chanson et est de type integer.
+    price qui porte le prix de la chanson et est de type float.
+
+
+
+
+rails generate model Album title:string artist:string
+
+rails generate model Track title:string album:string artist:string duration:integer size:integer price:float
+
+a)
+
+1 - Il ya  347 Album dans la BDD
+2 - Eric Clapton
+3 - id: 40, title: "Perfect", album: "Jagged Little Pill", artist: "Alanis 				Morissette", duration: 188133, size: 6145404, price: 0.99
+4 - id: 92, title: "Use Your Illusion II", artist: "Guns N Roses", created_at: "2021-02-03 				17:42:41", updated_at: "2021-02-03 17:42:41"> 
+
+b)
+
+1 - Album.find_by("title like ?", "%Great%")
+2 - music_selected = Album.find_by("title like ?", "%music%") 
+    music_selected.delete
+3 - arcdc = Album.where(artist: "AC/DC")
+	2.7.1 :067 > arcdc.count
+	   (0.3ms)  SELECT COUNT(*) FROM "albums" WHERE "albums"."artist" = ?  [["artist", "AC/DC"]]
+	 => 2
+4 - search_by_duration = Track.where(duration: 158589)
+	search_by_duration.count
+  	 (0.3ms)  SELECT COUNT(*) FROM "tracks" WHERE "tracks"."duration" = ?  [["duration", 158589]]
+ 	=> 0 
+
+c) 
+
+1 - 
+	
+Track.where(artist: "AC/DC").each do |track|
+puts track.title
+end
+
+2 - 
+
+Track.where(title: "Let There Be Rock").each do |track|
+puts track.title
+end
+
+  Track Load (0.3ms)  SELECT "tracks".* FROM "tracks" WHERE "tracks"."title" = ?  [["title", "Let There Be Rock"]]
+Let There Be Rock
+ => [#<Track id: 17, title: "Let There Be Rock", album: "Let There Be Rock", artist: "AC/DC", duration: 366654, size: 12021261, price: 0.99, created_at: "2021-02-03 17:42:43", updated_at: "2021-02-03 17:42:43">]
+ 
+3 - 
+
+ 
